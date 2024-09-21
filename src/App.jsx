@@ -2,6 +2,7 @@ import { useState } from 'react'
 import MainInfo from '../components/main_info.jsx'
 import CardGoTO from '../components/card_go_to.jsx'
 import GeneralButton from '../components/general_button.jsx'
+import CardJob from '../components/card_job.jsx'
 import './App.sass'
 
 const suggestedProfiles = [
@@ -56,7 +57,7 @@ const suggestedProfiles = [
 ]
 
 // candidats cateories
-let categories = [
+const categories = [
   {
     label: "Master (CoC)",
     link: "#",
@@ -99,6 +100,33 @@ let categories = [
   },
 ]
 
+const lastsJobs = [
+  {
+    link: "#",
+    date: "[Ref.: 10388] - Saturday, 14 September 2024",
+    label: "ETO per M/Y privato 86M a bandiera Middle East",
+    period: "Boarding period:  16/09/2024 - Permanent Contract",
+    salary: "Salary: € 3,000-€ 4,000",
+  },
+  {
+    link: "#",
+    date: "[Ref.: 10388] - Saturday, 14 September 2024",
+    label: "ETO per M/Y privato 86M a bandiera Middle East",
+    period: "Boarding period:  16/09/2024 - Permanent Contract",
+    salary: "Salary: € 3,000-€ 4,000",
+  },
+  {
+    link: "#",
+    date: "[Ref.: 10388] - Saturday, 14 September 2024",
+    label: "ETO per M/Y privato 86M a bandiera Middle East",
+    period: "Boarding period:  16/09/2024 - Permanent Contract",
+    salary: "Salary: € 3,000-€ 4,000",
+  },
+  
+]
+
+
+
 
 
 function App() {
@@ -116,7 +144,7 @@ function App() {
   return (
     <>
 
-    <div className="base_width">
+    <div className="base_width con_paragraph m_t_3">
       <h1>Welcome aboard Marineria.it</h1>
     </div>
     
@@ -247,7 +275,7 @@ function App() {
 
 
     {/* LAST JOBS AVALIDABLE */}
-    <div className="base_width">
+    <div className="base_width m_y_4">
 
       <a href="#">
         <div className="label orange">
@@ -257,16 +285,17 @@ function App() {
       </a>
 
       <div className="con_jobs" >
-        <a href="#">
-          <div className="box_job_card">
-            <label >[Ref.: 10388] - Saturday, 14 September 2024 </label>
-            <MainInfo icon="person" label="Deckhand for private M/Y 18M Italian Flag" size="s" />
-            <div className="box_one">
-              <span>Boarding period:  16/09/2024 - Permanent Contract </span>
-              <span><strong>Salary: € 3,000-€ 4,000</strong></span>
-            </div>
-          </div>
-        </a>
+
+        {
+          lastsJobs.map((job)=>{
+            return (
+              <a href={job.link}>
+                <CardJob job_data={job} />
+              </a>
+            )
+          })
+        }
+        
       </div>
 
     </div>
