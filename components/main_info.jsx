@@ -8,7 +8,7 @@ function MainInfo({icon, label, size}){
         {
           icon && (
             <div className="ic">
-            <span class="material-symbols-outlined">{icon}</span>
+            <span className="material-symbols-outlined">{icon}</span>
           </div>
           ) 
         }

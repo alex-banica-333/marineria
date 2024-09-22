@@ -2,6 +2,7 @@ import { useState } from 'react'
 import MainInfo from '../components/main_info.jsx'
 import CardGoTO from '../components/card_go_to.jsx'
 import GeneralButton from '../components/general_button.jsx'
+import Label from '../components/label.jsx'
 import CardJob from '../components/card_job.jsx'
 import './App.sass'
 
@@ -126,20 +127,25 @@ const lastsJobs = [
 ]
 
 
+// user profile data
+const user_data = {
+  
+}
 
+
+
+function ImageCard({img_url}){
+  return (
+    <div className="con_imageCard">
+      <div className="box_imageCard">
+        <img src={img_url} />
+      </div>
+    </div>
+  )
+}
 
 
 function App() {
-
-  function ImageCard({img_url}){
-    return (
-      <div className="con_imageCard">
-        <div className="box_imageCard">
-          <img src={img_url} />
-        </div>
-      </div>
-    )
-  }
 
   return (
     <>
@@ -156,8 +162,8 @@ function App() {
         {
           suggestedProfiles.map((card, i) => {
             return (
-              <a href={card.link} terget="_blank">
-                <ImageCard img_url={card.img_url} key={i} />
+              <a href={card.link} terget="_blank" key={i}>
+                <ImageCard img_url={card.img_url}  />
               </a>
             )
           })
@@ -168,7 +174,7 @@ function App() {
 
 
 
-    {/* SECTION THE LAST REGISTRAZIONS */}
+    {/* SECTION THE LAST REGISTRATIONS */}
     <div className="base_width">
       
       {/* label */}
@@ -206,7 +212,7 @@ function App() {
             </p>
             
             <a href="#">
-              <GeneralButton icon="school" label="Registrazione Recruiters" />
+              <GeneralButton icon="school" label="Registration Recruiters" />
             </a>
           </CardGoTO>
 
@@ -214,26 +220,23 @@ function App() {
       </div>
 
     </div>
-    {/* # SECTION THE LAST REGISTRAZIONS */}
+    {/* # SECTION THE LAST REGISTRATIONS */}
 
 
 
-    {/* ALL CANDIDATS */}
+    {/* ALL CANDIDATES */}
     <div className="base_width m_y_3">
 
       <div>
-        <div className="label">
-          <span className="ic material-symbols-outlined">search</span>
-          <span>Tutti i Candidati</span>
-        </div>
+        <Label icon="search" label="Tutti i Candidati" />
       </div>
 
-      {/* Candidats category list */}
+      {/* Candidates category list */}
       <div className="con_info">
         {
-          categories.map((cat)=>{
+          categories.map((cat, i)=>{
             return (
-              <a href={cat.link}>
+              <a href={cat.link} key={i}>
                 <MainInfo icon="person" label={cat.label} size="s" />
               </a>
             )
@@ -242,26 +245,22 @@ function App() {
       </div>
 
     </div>
-    {/* # ALL CANDIDATS */}
+    {/* # ALL CANDIDATES */}
 
 
 
-  {/* ALL CANDIDATS immediately available*/}
+  {/* ALL CANDIDATES immediately available*/}
   <div className="base_width m_y_3">
 
-      <div>
-        <div className="label">
-          <span className="ic material-symbols-outlined">search</span>
-          <span>Immediately available</span>
-        </div>
-      </div>
+    
+      <Label icon="search" label="Immediately available" />
 
-      {/* Candidats category list */}
+      {/* Candidates category list */}
       <div className="con_info">
         {
-          categories.map((cat)=>{
+          categories.map((cat, i)=>{
             return (
-              <a href={cat.link}>
+              <a href={cat.link} key={i}>
                 <MainInfo icon="event_upcoming" label={cat.label} size="s" />
               </a>
             )
@@ -270,26 +269,23 @@ function App() {
       </div>
 
     </div>
-    {/* # ALL CANDIDATS immediately available*/}
+    {/* # ALL CANDIDATES immediately available*/}
 
 
 
-    {/* LAST JOBS AVALIDABLE */}
+    {/* LAST JOBS AVAILABLE */}
     <div className="base_width m_y_4">
 
       <a href="#">
-        <div className="label orange">
-          <span className="ic material-symbols-outlined">work</span>
-          <span >Current Job List (19 offers)</span>
-        </div>
+        <Label icon="work" label="Current Job List (19 offers)" />
       </a>
 
       <div className="con_jobs" >
 
         {
-          lastsJobs.map((job)=>{
+          lastsJobs.map((job, i)=>{
             return (
-              <a href={job.link}>
+              <a href={job.link} key={i} >
                 <CardJob job_data={job} />
               </a>
             )
@@ -300,7 +296,63 @@ function App() {
 
     </div>
 
-    {/* # LAST JOBS AVALIDABLE */}
+    {/* # LAST JOBS AVAILABLE */}
+
+
+    {/* PROFILE PAGE */}
+    <div className="con_profile_page base_width">
+      <div className="box_profile_page">
+        {/* column one */}
+        <div className="box_one">
+          {/* profile id */}
+          <GeneralButton icon="" label="Profile 72139" />
+
+          {/* user */}
+          <div className="">
+            {/* user interactions with Marineria */}
+            <div className="grid-2">
+              <span>Registered: 09/05/2024</span>
+              <span className="js-end" >Last seen: 09/22/2024</span>
+            </div>
+            {/* slider image */}
+            <ImageCard img_url="https://www.marineria.it/PROFoto/6459613122023171241_A.jpg"  />
+          </div>
+
+          {/* references */}
+
+        </div> 
+        {/* column tow - main page content */}
+        <div className="box_two grid gap-0_4">
+          {/* role */}
+          <Label icon="anchor" label="Marinaio" />
+          <p>Mozzo Ormeggiatore</p>
+
+          {/* user general data */}
+          <div className="grid-2 gap-1">
+            <div className="grid gap-0_4">
+              {/* Available from */}
+              <span>Available from 09/22/2024</span>
+              {/* Contract status */}
+              <span>Currently under contract</span>
+              {/* Job offers received */}
+              <span>Job offers received: 0</span>
+            </div>
+            <div className="grid gap-0_5">
+              {/* Passport */}
+              <span>Passport: Italy</span>
+              {/* Position */}
+              <span>Currently in: Palau </span>
+              {/* Salary */}
+              <span>Salary € Not declared</span>
+            </div>
+          </div>
+
+        </div> {/* # column tow - main page content */}
+
+
+      </div>
+    </div>
+    {/* # PROFILE PAGE */}
 
     </>
   )
