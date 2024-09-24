@@ -42,6 +42,7 @@ $tablet_size: 817px
   --orange-500: #FFA621
   --orange-600: #FF8C21
   --orange-700: #FF7A00
+  --orange-750: #ff6633 
   --orange-800: #ff5e00
 
   --viola-500: #521A88
@@ -153,11 +154,11 @@ li
   p
     font-size: 0.9em
     line-height: 1.5em
-    font-weight: 500
+    font-weight: 400
   span
     font-size: 1em
     line-height: 1.5em
-    font-weight: 600
+    font-weight: 400
   li
     font-size: 1em
     line-height: 1.5em
@@ -304,7 +305,7 @@ li
   background: var(--green-400)
   color: white
   align-items: center
-  cursor: pointer
+  // cursor: pointer
   font-size: 1em
   border-radius: .3em
   transition: .3s
@@ -315,6 +316,10 @@ li
     font-size: 1.5em
   .label
     font-size: .9em
+  &.orange
+    background: var(--orange-750)
+    &:hover
+      background: var(--orange-750)
   &:hover
     background: var(--green-500)
 
@@ -477,6 +482,7 @@ li
         font-size: .8em
       button
         margin: 0 auto
+        cursor: pointer
 
 
 
