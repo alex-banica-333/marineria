@@ -127,10 +127,6 @@ const lastsJobs = [
 ]
 
 
-// user profile data
-const user_data = {
-  
-}
 
 
 
@@ -228,7 +224,7 @@ function App() {
     <div className="base_width m_y_3">
 
       <div>
-        <Label icon="search" label="Tutti i Candidati" />
+        <Label icon="search">Tutti i Candidati</Label>
       </div>
 
       {/* Candidates category list */}
@@ -253,7 +249,7 @@ function App() {
   <div className="base_width m_y_3">
 
     
-      <Label icon="search" label="Immediately available" />
+      <Label icon="search"> Immediately available </Label>
 
       {/* Candidates category list */}
       <div className="con_info">
@@ -277,7 +273,7 @@ function App() {
     <div className="base_width m_y_4">
 
       <a href="#">
-        <Label icon="work" label="Current Job List (19 offers)" />
+        <Label icon="work"> Current Job List (19 offers) </Label>
       </a>
 
       <div className="con_jobs" >

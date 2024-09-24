@@ -1,8 +1,9 @@
-function Label({icon, label}){
+function Label({icon, children, classes = []}){
   return (
-    <div className={ `label ${icon && "col_2"}`} >
+    <div className={ `label ${icon && "col_2"} ${classes.join(' ')}`} >
       <span className="ic material-symbols-outlined">{icon}</span>
-      <span>{label}</span>
+      {/* <span>{label}</span> */}
+      <span>{children}</span>
     </div>
   )
 }

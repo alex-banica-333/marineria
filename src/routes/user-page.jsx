@@ -2,6 +2,65 @@ import GeneralButton from '/components/general_button.jsx'
 import Label from '/components/label.jsx'
 
 
+
+// user profile data
+const user_data = {
+  position: {
+    primary: "Comandante (CoC)",
+    secondary: "Ufficiale di Coperta Comandante Ormeggiatore Direttore di Porto",
+  },
+  available: {
+    on_from: "09/22/2024",
+    
+  },
+  contract: {
+    status: "Currently under contract",
+  },
+  offers_received: "0",
+  passport: {
+    state: "Italy"
+  },
+  address: {
+    city: "Palau",
+  },
+  salary: {
+    value: "Not declared",
+    currency: "€",
+  }
+}
+
+// user general info data
+const general_user_data = [
+  {
+    label: "Dati personali",
+    status: true,
+    texts: [
+      "Sposato/a 38 anni, Non fumo",
+      "Residente a: meta (NA) Italia"
+    ]
+  },
+  {
+    label: "Esperienza di navigazione",
+    status: true,
+    texts: [
+      "9 anni",
+      "3 anni 5 mesi a Libretto"
+    ]
+  },
+  {
+    label: "Libretto di navigazione",
+    status: true,
+    texts: [
+      " 1° categoria , castellammare di stabia , Ufficiale ",
+    ]
+  },
+  {
+    label: "Referenze",
+    status: false,
+  },
+]
+
+
 function ImageCard({img_url}){
   return (
     <div className="con_imageCard">
@@ -15,7 +74,7 @@ export default function UserPage(){
   return (
     <>
       {/* PROFILE PAGE */}
-      <div className="con_profile_page base_width">
+      <div className="con_profile_page base_width m_y_4">
         <div className="box_profile_page">
           {/* column one */}
           <div className="box_one">
@@ -36,33 +95,72 @@ export default function UserPage(){
             {/* references */}
 
           </div> 
+
           {/* column tow - main page content */}
-          <div className="box_two grid gap-0_4">
+          <div className="box_two grid gap-1_5">
+
             {/* role */}
-            <Label icon="anchor" label="Marinaio" />
-            <p>Mozzo Ormeggiatore</p>
+            <div className='grid gap-0_4' >
+              <Label icon="anchor" classes={["f-1_2"]} > {user_data?.position?.primary} </Label>
+              <p>{user_data?.position?.secondary}</p>
+            </div>
+            
 
             {/* user general data */}
-            <div className="grid-2 gap-1">
-              <div className="grid gap-0_4 con_paragraph">
+            <div className="grid-2 gap-1 con_paragraph">
+              <div className="grid gap-0_2 ">
                 {/* Available from */}
-                <span className="green" ><strong>Available from 09/22/2024</strong></span>
+                { user_data?.available?.on_from && 
+                <span className="green" ><strong>Available from {user_data.available.on_from}</strong></span>}                
                 {/* Contract status */}
-                <span><strong>Currently under contract</strong></span>
+                { user_data?.contract?.status && 
+                <span ><strong>{user_data.contract.status}</strong></span>}
                 {/* Job offers received */}
-                <span>Job offers received: 0</span>
+                { user_data?.offers_received && 
+                <span>Job offers received: {user_data.offers_received}</span>}
               </div>
-              <div className="grid gap-0_5">
+              <div className="grid gap-0_2">
                 {/* Passport */}
-                <span>Passport: Italy</span>
-                {/* Position */}
-                <span>Currently in: Palau </span>
+                { user_data?.passport?.state && <span>Passport: {user_data.passport.state}</span>}
+                {/* Address */}
+                { user_data?.address?.city && 
+                  <Label icon="location_on" classes={["action_input"]}>
+                    <span >Currently in: <strong>{user_data.address.city} </strong> </span>
+                  </Label>
+                }
                 {/* Salary */}
-                <span>Salary € Not declared</span>
+                { user_data?.salary?.value && <span>Salary {user_data.salary.currency} {user_data.salary.value}</span>}
               </div>
             </div>
 
+
+            {/* user general data */}
+            {
+              general_user_data.map((info)=>{
+                return(
+                  <div className="box_ingo grid gap-0_4">
+                    {/* title */}
+                    <span className="">
+                        {info.status == false && <strong>NO</strong> } {info.label}
+                    </span>
+                    {/* text content */}
+                    <div className="box_texts">
+                      {
+                        info?.texts?.map((text) => {
+                          return (
+                            <p>{text}</p>
+                          )
+                        })
+                      }
+                    </div>
+                  </div>
+                )
+              })
+            }
+            {/* # user general data */}
+            
           </div> {/* # column tow - main page content */}
+          
 
 
         </div>

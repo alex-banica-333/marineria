@@ -43,7 +43,7 @@ $tablet_size: 817px
   --orange-600: #FF8C21
   --orange-700: #FF7A00
   --orange-750: #ff6633 
-  --orange-800: #ff5e00
+  --orange-800: #eb5600
 
   --viola-500: #521A88
   --viola-400: #6B21B1
@@ -122,6 +122,15 @@ li
   //   color: var(--green-300)
   &.white
     color: white
+  .green
+    color: var(--green-500)
+  .action_input
+    color: var(--orange-750)
+    cursor: pointer
+    transition: .3s
+    &:hover
+      color: var(--orange-800)
+
   &.center_paragraph
     text-align: center
     max-width: 38.6em
@@ -178,6 +187,9 @@ li
     p
       font-size: 1em
 
+.f-1_2
+  font-size: 1.2em
+
 
 // grid
 .grid
@@ -200,6 +212,11 @@ li
   display: grid
   grid-template-columns: repeat(2, 1fr)
   grid-auto-rows: max-content
+.grid-2-auto
+  width: max-content
+  display: grid
+  grid-template-columns: auto auto
+  grid-auto-rows: max-content
 
 
 .al-cen
@@ -218,7 +235,8 @@ li
   justify-content: space-between
 
 
-
+.gap-0_2
+  gap:.2em
 .gap-0_4
   gap:.4em
 .gap-0_5
@@ -281,7 +299,7 @@ li
   align-items: center
   &.col_2
     grid-template-columns: max-content auto
-    gap: 1em
+    gap: .5em
   &.orange
     color: var(--orange-700)
     &:hover
@@ -491,6 +509,7 @@ li
 .con_profile_page
   .box_profile_page
     @include grid_col_1
+    gap: 2em
     grid-template-columns: 40% auto
     .box_one
       @include border
@@ -498,4 +517,12 @@ li
       grid-template-columns: 100%
       background: var(--gray-50)
       padding: 1em
+
+
+.box_ingo
+  &>span
+    color: var(--green-400)
+    strong
+      color: red
+  // .box_texts
       
