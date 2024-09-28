@@ -1,5 +1,6 @@
 import GeneralButton from '/components/general_button.jsx'
 import Label from '/components/label.jsx'
+import CardGenInfo from '/components/card_general_info.jsx'
 
 
 
@@ -58,6 +59,117 @@ const general_user_data = [
     label: "Referenze",
     status: false,
   },
+  {
+    label: "Education, languages",
+    texts: [
+      "Nautical Institute",
+      "Italian Spanish",
+    ]
+  },
+  {
+    label: "IMO Courses / Certifications",
+    texts: [
+      "Radar Obs./Plottin",
+    ]
+  },
+  {
+    label: "Boat license",
+    texts: [
+      "Power Boat Coastal (1981)",
+    ]
+  }
+]
+
+// past boardings list
+const boardings_list = [
+  {
+    data: [
+      {
+        label: "Period",
+        text: "04/2009 - 12/2019"
+      },
+      {
+        label: "Unit",
+        text: "28mt"
+      },
+      {
+        label: "Role held",
+        text: "Comandante "
+      },
+      {
+        label: "Main Tasks",
+        text: "Comandante"
+      },
+    ]
+  },
+  {
+    data: [
+      {
+        label: "Period",
+        text: "04/2009 - 12/2019"
+      },
+      {
+        label: "Unit",
+        text: "28mt"
+      },
+      {
+        label: "Role held",
+        text: "Comandante "
+      },
+      {
+        label: "Main Tasks",
+        text: "Comandante"
+      },
+    ]
+  },
+  {
+    data: [
+      {
+        label: "Period",
+        text: "04/2009 - 12/2019"
+      },
+      {
+        label: "Unit",
+        text: "28mt"
+      },
+      {
+        label: "Role held",
+        text: "Comandante "
+      },
+      {
+        label: "Main Tasks",
+        text: "Comandante"
+      },
+    ]
+  }
+]
+
+
+// past boardings list
+const personal_skills = [
+  {
+    data: [
+      {
+        text: "Ho conosciuto coste è insenature bellissime, le mie ambizioni è quello di fare sempre il mio dovere è fare divertire chi mi assume. Ho esperienza di navigazione dal 1982 ad oggi come il mio CV dimostra."
+      },
+      {
+        label: "Further Abilities",
+        text: "Marinaio motorista manutenzione di tutto ciò aderente alla barca (yacht) "
+      },
+      {
+        label: "Soft skills",
+        text: "Si ho esperienza lavorative si col comandate si con altri membri dell'equipaggio."
+      },
+      {
+        label: "Organizational skills",
+        text: "Si organizzazione per uscite in mare e organizzazione in cucina. "
+      },
+      {
+        label: "Technical skills",
+        text: "Son marinaio motorista è ho esperienza nei motori dalla manutenzione al primo invertendo in caso di guasto. "
+      },
+    ]
+  },
 ]
 
 
@@ -74,12 +186,17 @@ export default function UserPage(){
   return (
     <>
       {/* PROFILE PAGE */}
-      <div className="con_profile_page base_width m_y_4">
+      <div className="con_profile_page base_width m_y_4 con_paragraph">
         <div className="box_profile_page">
           {/* column one */}
           <div className="box_one">
+
+
+
             {/* profile id */}
             <GeneralButton label="Profile 72139" classes={["orange"].join(" ")} />
+
+
 
             {/* user */}
             <div className="">
@@ -92,12 +209,23 @@ export default function UserPage(){
               <ImageCard img_url="https://www.marineria.it/PROFoto/6459613122023171241_A.jpg"  />
             </div>
 
-            {/* references */}
+            {/* csv files */}
+            <CardGenInfo classes={["gap-0_5"]} >
+              <p className="grid" >
+                {<strong className='text_slim' >Also in team with</strong>}
+                il mio marinaio (CV unavailable on Marineria) 
+              </p>
+            </CardGenInfo>
 
-          </div> 
+          </div>  {/* # column one */}
+
+
+
 
           {/* column tow - main page content */}
           <div className="box_two grid gap-1_5">
+
+
 
             {/* role */}
             <div className='grid gap-0_4' >
@@ -106,8 +234,9 @@ export default function UserPage(){
             </div>
             
 
+
             {/* user general data */}
-            <div className="grid-2 gap-1 con_paragraph">
+            <div className="grid-2 gap-1">
               <div className="grid gap-0_2 ">
                 {/* Available from */}
                 { user_data?.available?.on_from && 
@@ -134,30 +263,104 @@ export default function UserPage(){
             </div>
 
 
+
+            {/* separation line */}
+            <i className="sep_line" ></i>
+
+
+
             {/* user general data */}
-            {
-              general_user_data.map((info)=>{
-                return(
-                  <div className="box_ingo grid gap-0_4">
-                    {/* title */}
-                    <span className="">
-                        {info.status == false && <strong>NO</strong> } {info.label}
-                    </span>
-                    {/* text content */}
-                    <div className="box_texts">
-                      {
-                        info?.texts?.map((text) => {
-                          return (
-                            <p>{text}</p>
-                          )
-                        })
-                      }
+            <div className="con_general_data grid-2 gap-1">
+              {
+                general_user_data.map((info, i)=>{
+                  return(
+                    <div className="box_info" key={i}>
+                      {/* title */}
+                      <span className="">
+                          {info.status == false && <strong>NO</strong> } {info.label}
+                      </span>
+                      {/* text content */}
+                      <div className="box_texts">
+                        {
+                          info?.texts?.map((text, j) => {
+                            return (
+                              <p  key={j} >{text}</p>
+                            )
+                          }) // # map()
+                        }
+                      </div>
                     </div>
-                  </div>
-                )
-              })
-            }
+                  )
+                })
+              }
+            </div>
+
+
+
+            {/* separation line */}
+            <i className="sep_line" ></i>
+
+
+
             {/* # user general data */}
+
+            {/* con boardings */}
+            <div className='grid gap-0_5' >
+              <Label  classes={[" size_l green"]}>Boardings carried out</Label>
+
+              {/* boardings list */}
+              <div className="grid gap-1">
+                {
+                  boardings_list.map((board, i) => {
+                    return (
+                      <CardGenInfo key={i} >
+                        {
+                          board.data.map((item, j) => {
+                            return (
+                              <p key={j} >{ item.label && `${item.label}:`} {item.text && item.text}</p>
+                            )
+                          }) // # map()
+                        }
+                      </CardGenInfo>
+                    ) // # return()
+                  }) // # map()
+                }
+                
+              </div> {/* # boardings list */}
+
+            </div> {/* # con boardings */}
+
+
+            
+            
+            {/* con personal skills */}
+            <div className='grid gap-0_5' >
+              <Label  classes={[" size_l green"]}>Personal skills</Label>
+
+              {/* boardings list */}
+              <div className="grid gap-1">
+                {
+                  personal_skills.map((skills, i) => {
+                    return (
+                      <CardGenInfo key={i} classes={["extended", "gap-0_5"]} >
+                        {
+                          skills.data.map((item, j) => {
+                            return (
+                              <p key={j} className="grid" >
+                                {item.label && <span className='text_slim' >{item.label}:</span>}
+                                {item.text && item.text}
+                              </p>
+                            )
+                          }) // # map()
+                        }
+                      </CardGenInfo>
+                    ) // # return()
+                  }) // # map()
+                }
+                
+              </div> {/* # boardings list */}
+
+            </div> {/* # con personal skills */}
             
           </div> {/* # column tow - main page content */}
           

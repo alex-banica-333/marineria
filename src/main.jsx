@@ -11,6 +11,7 @@ import {
 } from "react-router-dom"
 
 import './index.sass'
+import './responsive.sass'
 
 const router = createBrowserRouter([
   {

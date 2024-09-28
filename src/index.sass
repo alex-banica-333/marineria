@@ -110,6 +110,10 @@ a
 li
   list-style: none
 
+.sep_line
+  @include border
+  // margin: 1em 0
+
 .con_paragraph
   display: grid
   grid-template-rows: 100%
@@ -130,6 +134,9 @@ li
     transition: .3s
     &:hover
       color: var(--orange-800)
+  .text_slim
+    font-size: .9em
+    color: var(--gray-500)
 
   &.center_paragraph
     text-align: center
@@ -304,6 +311,13 @@ li
     color: var(--orange-700)
     &:hover
       color: var(--orange-800)
+  &.green
+    color: var(--green-400)
+    &:hover
+      color: var(--green-500)
+  &.size_l
+    font-size:  1.4em
+
 
 
 .m_y_3
@@ -517,12 +531,25 @@ li
       grid-template-columns: 100%
       background: var(--gray-50)
       padding: 1em
+  @media screen and ( max-width: 819px )
+    .box_profile_page
+      grid-template-columns: 100%
 
 
-.box_ingo
+.box_info
   &>span
     color: var(--green-400)
     strong
       color: red
   // .box_texts
       
+
+
+.box_gen_info_card
+  @include border
+  padding: 0.6em 1em
+
+
+
+
+  
